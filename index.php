@@ -93,7 +93,7 @@ bindtextdomain("messages", "./locale");
 textdomain("messages");
 
 
-//almStart Dispatcher
+//bootCMF Dispatcher
 
 require dirname(__FILE__).'/app/bootcmf.php';
 

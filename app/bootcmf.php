@@ -3,7 +3,7 @@
  * BootCMS standard dispatcher
  */
 
-require dirname(__FILE__)."/../".BOOTCMS_PATH.strtolower(ERR_NAMESPACE)."/".strtolower(CONTROLLERS)."/".ERR_CONTROLLER.".php";
+require dirname(__FILE__)."/../".BOOTCMF_PATH.strtolower(ERR_NAMESPACE)."/".strtolower(CONTROLLERS)."/".ERR_CONTROLLER.".php";
 
 
 $dir="";
@@ -25,7 +25,7 @@ $args=explode("/",$action);
 
 foreach($args as $item) {
 	
-    if(is_dir(dirname(__FILE__)."/../".BOOTCMS_PATH.strtolower(implode("/",$namespace))."/".$item)&&$item!=""&&$found==0) {
+    if(is_dir(dirname(__FILE__)."/../".BOOTCMF_PATH.strtolower(implode("/",$namespace))."/".$item)&&$item!=""&&$found==0) {
       	
 	$dir.=$item."/";
 	
@@ -52,7 +52,7 @@ if(empty($class)){
 	$class=DEFAULT_CONTROLLER;
 }
 
-$path =BOOTCMS_PATH.$dir.strtolower(CONTROLLERS)."/".$class.".php";
+$path =BOOTCMF_PATH.$dir.strtolower(CONTROLLERS)."/".$class.".php";
    	
 
 /*

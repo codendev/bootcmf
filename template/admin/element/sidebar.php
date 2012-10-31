@@ -36,17 +36,17 @@
 	<div>
 		<ul>
 			<ul>
-				<li><a href="<?php BASE_URL?>?action=admin/taxonomy/index/add">Add Group</a>
+				<li><a href="<?php BASE_URL?>?action=admin/taxonomy/index/add"><?php echo __("Add Taxonomy");?></a>
 				</li>
-				<li><a href="<?php BASE_URL?>?action=admin/taxonomy/index">Groups</a>
+				<li><a href="<?php BASE_URL?>?action=admin/taxonomy/index"><?php echo __("Taxonomies");?></a>
 				</li>
-				<li><a href="<?php BASE_URL?>?action=admin/taxonomy/category/add">Add Category</a>
+				<li><a href="<?php BASE_URL?>?action=admin/taxonomy/category/add"><?php echo __("Add Category");?></a>
 				</li>
-				<li><a href="<?php BASE_URL?>?action=admin/taxonomy/category/index">Catogories</a>
+				<li><a href="<?php BASE_URL?>?action=admin/taxonomy/category/index"><?php echo __("Categories");?></a>
 				</li>
-				<li><a href="<?php BASE_URL?>?action=admin/taxonomy/tag/add">Add Tag</a>
+				<li><a href="<?php BASE_URL?>?action=admin/taxonomy/tag/add"><?php echo __("Add Tag");?></a>
 				</li>
-				<li><a href="<?php BASE_URL?>?action=admin/taxonomy/tag/index">Tags</a>
+				<li><a href="<?php BASE_URL?>?action=admin/taxonomy/tag/index"><?php echo __("Add Tags");?></a>
 				</li>
 			</ul>
 

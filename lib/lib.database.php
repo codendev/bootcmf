@@ -1,9 +1,9 @@
 <?php
 
-class Database extends MDB2 {
+class Database {
 
-	private $__db;
-	
+	private $__mdb2;
+
 	private static $__instance;
 
 	public function   __construct() {
@@ -11,53 +11,14 @@ class Database extends MDB2 {
 		$this->__init();
 
 	}
-	public function __call($method,$args){
-		
-		echo 1;exit;
-	}
-	
-	
+
 	private function __init() {
 
-		$this->__db = MDB2::singleton(MDB_DSN);
+		$this->__mdb2 = MDB2::singleton(MDB_DSN);
 
-		$this->__db->executeQuery=function ($sql, $values=array()) {
-
-
-			$results = array();
-
-			if(sizeof($values) > 0) {
-
-				$statement = $this->__db->prepare($sql, TRUE, MDB2_PREPARE_RESULT);
-
-				$resultset = $statement->execute($values);
-
-				$statement->free();
-
-			}
-			else {
-
-				$resultset = $this->__db->query($sql);
-
-			}
-			if(PEAR::isError($resultset)) {
-
-				die('DB Error... ' . $resultset->getMessage());
-
-			}
-
-			while($row = $resultset->fetchRow(MDB2_FETCHMODE_ASSOC)) {
-
-				$results[] = $row;
-
-			}
-
-			return $results;
-		};
-		
-		if (PEAR::isError($this->__db))
+		if (PEAR::isError($this->__mdb2))
 		{
-			echo 'Cannot connect to database: ' . $this->__db->getMessage();
+			echo 'Cannot connect to database: ' . $this->__mdb2->getMessage();
 		}
 
 	}
@@ -69,9 +30,84 @@ class Database extends MDB2 {
 			Database::$__instance=new Database();
 		}
 
-		return Database::$__instance->__db;
+		return Database::$__instance;
 
 	}
+
+	function executeQuery($sql, $values=array()) {
+
+		$results = array();
+
+		if(sizeof($values) > 0) {
+
+			$statement = $this->__mdb2->prepare($sql, TRUE, MDB2_PREPARE_RESULT);
+
+			if(PEAR::isError($statement)) {
+
+				die('DB Error... ' . $statement->getMessage());
+
+			}
+			else{
+
+				$resultset = $statement->execute($values);
+			}
+			$statement->free();
+
+
+		}
+		else {
+
+			$resultset = $this->__mdb2->query($sql);
+
+		}
+		if(PEAR::isError($resultset)) {
+
+			die('DB Error... ' . $resultset->getMessage());
+
+		}
+
+		while($row = $resultset->fetchRow(MDB2_FETCHMODE_ASSOC)) {
+
+			$results[] = $row;
+
+		}
+
+		return $results;
+	}
+
+	public function quote($str,$type='text'){
+
+		return $this->__mdb2->quote($str,$type);
+
+	}
+
+	public function update($table,$data,$types,$key,$id){
+
+		$this->__mdb2->loadModule('Extended');
+
+		$affectedRows = $this->__mdb2->extended->autoExecute($table, $data,
+				MDB2_AUTOQUERY_UPDATE, $key." = ".$this->quote($id, 'integer'), $types);
+
+		if (PEAR::isError($affectedRows)) {
+			die($affectedRows->getMessage());
+		}
+		return $affectedRows;
+	}
+
+	public function insert($table,$data,$types){
+
+		$this->__mdb2->loadModule('Extended');
+
+		$affectedRows = $this->__mdb2->extended->autoExecute($table, $data,
+				MDB2_AUTOQUERY_INSERT, null, $types);
+
+		if (PEAR::isError($affectedRows)) {
+			die($affectedRows->getMessage());
+		}
+		return $affectedRows;
+
+	}
+
 
 
 

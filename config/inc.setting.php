@@ -1,6 +1,6 @@
 <?php
 
-define("BOOTCMS_PATH","app/bootcmf/");
+define("BOOTCMF_PATH","app/bootcmf/");
 
 require_once(dirname(__FILE__).'/inc.autoload.php');
 
