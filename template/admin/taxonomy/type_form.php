@@ -7,7 +7,7 @@
 		</div>
 		<div class="article">
 			<h1 class="article-heading">
-				<?php echo __("Add/Edit Group");?>
+				<?php echo __("Add/Edit Taxonomy Type");?>
 			</h1>
 			<div style="color: orange;padding:10px;">
 			<?php if(isset($added)){ echo __("Entry created sucessfully");}?>

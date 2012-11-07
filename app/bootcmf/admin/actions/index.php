@@ -13,7 +13,7 @@ class Admin_Index extends Core_Parent_Action {
 		
 		if(!Auth::getAuth()->loggedIn()) {
 		
-			header("Location:".BASE_URL."?action=admin");
+			header("Location:".BASE_URL."/admin");
 		
 		}
 		
@@ -28,7 +28,7 @@ class Admin_Index extends Core_Parent_Action {
 		
 		if(Auth::getAuth()->loggedIn()) {
 
-            header("Location:".BASE_URL."?action=admin/index/welcome");
+            header("Location:".BASE_URL."admin/index/welcome");
 
         }
 		$this->meta("Login","","");

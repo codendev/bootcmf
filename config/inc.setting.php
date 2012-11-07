@@ -10,7 +10,7 @@ spl_autoload_register('__autoload');
 
 //Host
 
-define("BASE_URL", "http://localhost/workspace/bootcmf/");
+define("BASE_URL", "http://localhost/workspace/bootCMF/");
 
 define("SITE_NAME", "CodenDev");
 
