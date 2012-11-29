@@ -1,6 +1,6 @@
 <?php
 /*
- * BootCMS standard dispatcher
+ * Bootcmf standard dispatcher
  */
 
 require dirname(__FILE__)."/../".BOOTCMF_PATH.strtolower(ERR_NAMESPACE)."/".strtolower(CONTROLLERS)."/".ERR_CONTROLLER.".php";
@@ -12,6 +12,14 @@ $action="";
 $found=0;
 $params=array();
 extract($_GET);
+
+
+/*
+ * SEO Route Match
+ */
+$seo=new Core_Lib_Seo();
+
+$action=$seo->map($action);
 
 /*
  *Route Standard Pattern match

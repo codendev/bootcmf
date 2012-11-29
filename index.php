@@ -10,16 +10,6 @@ ini_set('display_errors','On');
 
 define('INSTALLDIR', dirname(__FILE__));
 
-
-//Common Utility Functions
-
-require dirname(__FILE__).'/func/tool.php';
-
-//Templating Functions
-
-require dirname(__FILE__).'/func/template.php';
-
-
 /*
  Turn off magic quotes
 */
@@ -48,18 +38,20 @@ To circumvent this issue either you choose the REQUEST_URI variable available in
 variable that might include such data should be not be part of the action url variable in $_GET.
 */
 
+require dirname(__FILE__).'/config/inc.setting.php';
+
 /*
  * Clean http request
 */
-$_GET = clean($_GET);
-$_POST = clean($_POST);
-$_REQUEST = clean($_REQUEST);
-$_COOKIE = clean($_COOKIE);
-$_FILES = clean($_FILES);
-$_SERVER = clean($_SERVER);
+$_GET = Core_Helper_Tool::clean($_GET);
+$_POST = Core_Helper_Tool::clean($_POST);
+$_REQUEST = Core_Helper_Tool::clean($_REQUEST);
+$_COOKIE = Core_Helper_Tool::clean($_COOKIE);
+$_FILES = Core_Helper_Tool::clean($_FILES);
+$_SERVER = Core_Helper_Tool::clean($_SERVER);
 
 
-require dirname(__FILE__).'/config/inc.setting.php';
+
 
 set_include_path(get_include_path() . PATH_SEPARATOR . INSTALLDIR . '/extlib/');
 

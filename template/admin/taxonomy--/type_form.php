@@ -1,9 +1,9 @@
-<?PHP load_template("admin/element/header.php",$data);?>
+<?PHP Core_Helper_Template::template("admin/block/header.php",$data);?>
 
 <div id="site-container">
 	<div class="content">
 		<div class="sidebar">
-			<?PHP load_template("admin/element/sidebar.php",$data);?>
+			<?PHP Core_Helper_Template::template("admin/block/sidebar.php",$data);?>
 		</div>
 		<div class="article">
 			<h1 class="article-heading">
@@ -17,7 +17,7 @@
 			<form method="post" class="form">
 				<table>
 					<tr>
-						<td><?php echo __("Title");?></td>
+						<td><?php echo __("Title");?></td>_
 						<td><input id="title" name="title" type="text"
 							value="<?php echo $title; ?>" />
 						</td>
@@ -27,7 +27,7 @@
 						<td><select id="parent_id" name="parent_id">
 								<option value="0"><?php echo __("No parent")?></option>
 								<?php foreach($parents as $parent):?>
-								<option value="<?php echo $parent["taxonomy_id"];?>" <?php echo $parent["taxonomy_id"]==$parent_id?"selected":"";?>><?php echo $parent["title"];?></option>
+								<option value="<?php echo $parent["type_id"];?>" <?php echo $parent["type_id"]==$parent_id?"selected":"";?>><?php echo $parent["title"];?></option>
 								<?php endforeach;?>
 						</select>
 						</td>
@@ -49,4 +49,4 @@
 
 		</div>
 
-		<?PHP load_template("admin/element/footer.php",$data);?>
+		<?PHP Core_Helper_Template::template("admin/block/footer.php",$data);?>

@@ -1,4 +1,4 @@
-<?PHP load_template("frontend/element/header.php",$data);?>
+<?PHP Core_Helper_Template::template("frontend/element/header.php",$data);?>
 
 <div id="site-container">
 	<div class="content">
@@ -89,7 +89,7 @@
 
 		</div>
 		<div  class="sidebar">
-			<?PHP load_template("frontend/element/sidebar.php",$data);?>
+			<?PHP Core_Helper_Template::template("frontend/element/sidebar.php",$data);?>
 		</div>
-<?PHP load_template("frontend/element/footer.php",$data);?>
+<?PHP Core_Helper_Template::template("frontend/element/footer.php",$data);?>
 

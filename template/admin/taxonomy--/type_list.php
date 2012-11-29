@@ -1,10 +1,10 @@
-<?PHP load_template("admin/element/header.php",$data);?>
+<?PHP Core_Helper_Template::template("admin/block/header.php",$data);?>
 
 <div id="site-container">
 
 	<div class="content">
 		<div class="sidebar">
-			<?PHP load_template("admin/element/sidebar.php",$data);?>
+			<?PHP Core_Helper_Template::template("admin/block/sidebar.php",$data);?>
 		</div>
 		<div class="article">
 			<h1 class="article-heading">
@@ -74,4 +74,4 @@
 			</form>
 		</div>
 
-		<?PHP load_template("admin/element/footer.php",$data);?>
+		<?PHP Core_Helper_Template::template("admin/block/footer.php",$data);?>

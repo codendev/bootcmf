@@ -1,5 +1,5 @@
 <?php
-class Home_Index extends Core_Parent_Action {
+class Home_Index extends Core_Abstract_Action {
    
     function __construct(){
 		

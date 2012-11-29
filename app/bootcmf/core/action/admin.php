@@ -1,12 +1,21 @@
 <?php
-class Core_Parent_Action extends Core_Abstract_Action {
-	
-	
+class Core_Action_Admin extends Core_Abstract_Action {
+
+
+	public function __construct(){
+
+		$sidebar=new Admin_Block_Sidebar();
+
+		$this->data["sidebar"]=$sidebar->index();
+
+	}
+
 	public function setTitle($title=""){
 
 		$this->data["metaTitle"]=$title;
 			
 	}
+
 	public function setDescription($description=""){
 			
 		$this->data["metaDescription"]=$description;
@@ -26,10 +35,21 @@ class Core_Parent_Action extends Core_Abstract_Action {
 
 		$this->data["metaKeywords"]=$keywords;
 	}
-	
+
 	public function redirect($url){
 
 		header("Location: $url");
+
+	}
+	public function breadcrumb($text,$url){
+
+		if(empty($this->data["breadcrumb"])){
+
+			$this->data["breadcrumb"][]=array("Home"=>Core_Helper_Tool::makeUrl("admin"));
+				
+		}
+
+		$this->data["breadcrumb"][]=array($text=>$url);
 
 	}
 

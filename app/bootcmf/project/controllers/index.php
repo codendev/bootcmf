@@ -5,7 +5,7 @@ class Cms_Index extends Core_Controller_Application {
 	function  index() {
 		 
 		
-		if(!Auth::getAuth()->loggedIn()){
+		if(!Core_Lib_Auth::getAuth()->loggedIn()){
 
 			$this->data["title"]="CodenDev Projects";
 

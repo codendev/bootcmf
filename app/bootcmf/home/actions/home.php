@@ -1,5 +1,5 @@
 <?php
-class Home_Home extends Core_Parent_Action {
+class Home_Home extends Core_Abstract_Action {
    
     function __construct(){
 		

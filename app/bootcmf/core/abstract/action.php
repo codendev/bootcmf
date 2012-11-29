@@ -46,10 +46,6 @@ abstract class Core_Abstract_Action {
 	
 	return $method;	
 		
-    }		    
-
+    }
+   
 }
-
-
-
-?>
