@@ -14,7 +14,7 @@ class Home_Home extends Core_Abstract_Action {
 		
 		$this->data["title"]="CodenDev Projects";
 
-		load_template('frontend/home/index.php',$this->data);
+		Core_Helper_Template::template('frontend/home/index.php',$this->data);
     
 	}
 
@@ -22,21 +22,21 @@ class Home_Home extends Core_Abstract_Action {
 
 		$this->data["title"]="CodenDev Projects Contributor";
 
-		load_template('frontend/home/contributor.php',$this->data);
+		Core_Helper_Template::template('frontend/home/contributor.php',$this->data);
     
 	}
     function  license() {
 
 		$this->data["title"]="CodenDev Projects Contributor";
 
-		load_template('frontend/home/license.php',$this->data);
+		Core_Helper_Template::template('frontend/home/license.php',$this->data);
     
     }
     function  about() {
 
 		$this->data["title"]="CodenDev Projects Contributor";
 
-		load_template('frontend/home/about.php',$this->data);
+		Core_Helper_Template::template('frontend/home/about.php',$this->data);
     
 	}		
 			
