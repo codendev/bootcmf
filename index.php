@@ -1,7 +1,4 @@
 <?php
-/*
- * almStart
-*/
 session_start();
 
 error_reporting(E_ALL);
@@ -38,7 +35,14 @@ To circumvent this issue either you choose the REQUEST_URI variable available in
 variable that might include such data should be not be part of the action url variable in $_GET.
 */
 
-require dirname(__FILE__).'/config/inc.setting.php';
+require dirname(__FILE__).'/config/setting.php';
+
+require_once(dirname(__FILE__).'/config/autoload.php');
+
+require_once(dirname(__FILE__).'/config/database.php');
+
+spl_autoload_register('__autoload');
+
 
 /*
  * Clean http request
@@ -85,7 +89,7 @@ bindtextdomain("messages", "./locale");
 textdomain("messages");
 
 
-//bootCMF Dispatcher
+//bootCMF
 
 require dirname(__FILE__).'/app/bootcmf.php';
 

@@ -3,13 +3,10 @@
  * Bootcmf standard dispatcher
  */
 
-require dirname(__FILE__)."/../".BOOTCMF_PATH.strtolower(ERR_NAMESPACE)."/".strtolower(CONTROLLERS)."/".ERR_CONTROLLER.".php";
-
-
-$dir="";
+$dir='';
 $namespace=array();
-$action="";
-$found=0;
+$action='';
+$found=false;
 $params=array();
 extract($_GET);
 
@@ -24,18 +21,18 @@ $action=$seo->map($action);
 /*
  *Route Standard Pattern match
  */
-if($action=="") {
+if($action=='') {
 
-    $action= DEFAULT_NAMESPACE."/".DEFAULT_CONTROLLER."/".DEFAULT_METHOD;
+    $action= DEFAULT_NAMESPACE.'/'.DEFAULT_CONTROLLER.'/'.DEFAULT_METHOD;
 }
-$args=explode("/",$action);
+$args=explode('/',$action);
 
 
 foreach($args as $item) {
 	
-    if(is_dir(dirname(__FILE__)."/../".BOOTCMF_PATH.strtolower(implode("/",$namespace))."/".$item)&&$item!=""&&$found==0) {
+    if(is_dir(dirname(__FILE__).'/../'.APP_DIR.'/'.'bootcmf'.'/'.strtolower(implode('/',$namespace)).'/'.$item)&&$item!=''&&$found==false) {
       	
-	$dir.=$item."/";
+	$dir.=$item.'/';
 	
 	$namespace[]=ucfirst($item);
 	
@@ -43,7 +40,7 @@ foreach($args as $item) {
     else {
 
         array_push($params,$item);
-        $found=1;
+        $found=true;
     }
 }
 
@@ -53,14 +50,14 @@ $class=array_shift($params);
 
 $method=array_shift($params);
 
-$method=$method==""?"index":$method;
+$method=$method==''?'index':$method;
 
 if(empty($class)){
 
 	$class=DEFAULT_CONTROLLER;
 }
 
-$path =BOOTCMF_PATH.$dir.strtolower(CONTROLLERS)."/".$class.".php";
+$path =APP_DIR.'/'.'bootcmf'.'/'.$dir.strtolower(CONTROLLERS).'/'.$class.'.php';
    	
 
 /*
@@ -68,8 +65,8 @@ $path =BOOTCMF_PATH.$dir.strtolower(CONTROLLERS)."/".$class.".php";
  */
 
 
-if(file_exists(dirname(__FILE__)."/../".$path)) {
-    require dirname(__FILE__)."/../".$path;
+if(file_exists(dirname(__FILE__).'/../'.$path)) {
+    require dirname(__FILE__).'/../'.$path;
 }
 else {
 /*
@@ -84,7 +81,7 @@ else {
 }
 
 
-$controller=implode("_",$namespace)."_".ucfirst($class);
+$controller=implode('_',$namespace).'_'.ucfirst($class);
 
 /*
 * Controller object
@@ -141,7 +138,7 @@ else {
     /*
      * Method not found
     */
-    $controller=ucfirst(ERR_NAMESPACE)."_".ucfirst(ERR_CONTROLLER);
+    $controller=ucfirst(ERR_NAMESPACE).'_'.ucfirst(ERR_CONTROLLER);
     $ref->setStaticPropertyValue('controller',$controller);
     $ref->setStaticPropertyValue('method',ERR_METHOD);
     $ref->setStaticPropertyValue('params',$params);
